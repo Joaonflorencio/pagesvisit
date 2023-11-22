@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.contador-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+#contador {
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+#resetButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
