@@ -1,12 +1,22 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    let contador = localStorage.getItem('contadorVisitas');
-    contador = contador ? parseInt(contador) : 0;
-    contador++;
-    localStorage.setItem('contadorVisitas', contador.toString());
-    document.getElementById('contador').innerText = contador;
+const contadorVisitasSpan = document.getElementById('contadorVisitas');
+const btnReestablecer = document.getElementById('btnReestablecer')
 
-    document.getElementById('resetButton').addEventListener('click', function() {
-        localStorage.setItem('contadorVisitas', '0');
-        document.getElementById('contador').innerText = '0';
-    });
+// Obtener el contador de visitas del localStorage
+const obtenerContadorLocalStorage = () => parseInt(localStorage.getItem('contadorVisitas')) || 0;
+let contadorVisitas = obtenerContadorLocalStorage();
+const guardarContadorLocalStorage = (contador) => localStorage.setItem('contadorVisitas', contador);
+
+const actualizarContador = () => {
+    contadorVisitasSpan.textContent = contadorVisitas;
+    // Guardar el contador actualizado en el localStorage
+    guardarContadorLocalStorage(contadorVisitas);
+}
+
+// Incrementar el contador y actualizar la página
+contadorVisitas++;
+actualizarContador();
+
+btnReestablecer.addEventListener("click", () => {
+  localStorage.setItem('contadorVisitas', 0)
+  contadorVisitasSpan.textContent = localStorage.getItem('contadorVisitas');
 });
